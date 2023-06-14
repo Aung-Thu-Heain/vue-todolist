@@ -3,22 +3,26 @@
     {
       "id": 1,
       "title": "project one",
-      "description": "i am project one"
+      "description": "i am project one",
+      "status": false
     },
     {
       "id": 2,
       "title": "project two",
-      "description": "i am project two"
+      "description": "i am project two",
+      "status": true
     },
     {
       "id": 3,
       "title": "project three",
-      "description": "i am project three"
+      "description": "i am project three",
+      "status": false
     },
     {
       "id": 4,
       "title": "project four",
-      "description": "i am project four"
+      "description": "i am project four",
+      "status": true
     }
   ]
 }

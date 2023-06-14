@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{ complete: project.status }">
     <div class="flex">
       <div>
         <h4 class="title" @click="detail = !detail">{{ project.title }}</h4>
@@ -63,5 +63,8 @@ span {
 }
 span:hover {
   color: blueviolet;
+}
+.complete {
+  border-left: 5px solid green;
 }
 </style>
