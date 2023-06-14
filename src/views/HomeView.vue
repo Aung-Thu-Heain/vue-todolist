@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1>To Do List</h1>
     <div v-for="project in projects" :key="project.id">
-      <singleProject :project="project" />
+      <singleProject :project="project" @delete="deleteUi" />
     </div>
   </div>
 </template>
@@ -19,6 +19,13 @@ export default {
       projects: [],
     };
   },
+  methods: {
+    deleteUi(id) {
+      this.projects = this.projects.filter((project) => {
+        return project.id != id;
+      });
+    },
+  },
   mounted() {
     fetch("http://localhost:3000/projects")
       .then((response) => {
@@ -27,7 +34,9 @@ export default {
       .then((data) => {
         this.projects = data;
       })
-      .catch(() => {});
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
