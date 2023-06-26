@@ -8,7 +8,7 @@
         <span class="material-icons" @click="deleteProject"
           >delete_forever</span
         >
-        <span class="material-icons"> task_alt </span>
+        <span class="material-icons" @click="updateComplete"> task_alt </span>
         <span class="material-icons">edit</span>
       </div>
     </div>
@@ -31,6 +31,24 @@ export default {
       fetch(this.api, { method: "delete" })
         .then(() => {
           this.$emit("delete", this.project.id);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    updateComplete() {
+      let updateUrl = this.api;
+      fetch(updateUrl, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status: !this.project.status,
+        }),
+      })
+        .then(() => {
+          this.$emit("status", this.project.id);
         })
         .catch((error) => {
           console.log(error);

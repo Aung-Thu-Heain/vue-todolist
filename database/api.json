@@ -4,7 +4,7 @@
       "id": 1,
       "title": "project one",
       "description": "i am project one",
-      "status": false
+      "status": true
     },
     {
       "id": 2,
@@ -16,12 +16,6 @@
       "id": 3,
       "title": "project three",
       "description": "i am project three",
-      "status": false
-    },
-    {
-      "id": 4,
-      "title": "project four",
-      "description": "i am project four",
       "status": true
     }
   ]
