@@ -1,16 +1,44 @@
 <template>
   <h1>Add New Project</h1>
-  <form>
-    <label>Project Name</label>
-    <input type="text" />
+  <form @submit.prevent="createProjcet">
+    <label>Project Title</label>
+    <input type="text" v-model="title" />
     <label>Project Description</label>
-    <input type="text" />
+    <input type="text" v-model="description" />
     <button>Create New Project</button>
   </form>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      title: this.title,
+      description: this.description,
+    };
+  },
+  methods: {
+    createProjcet() {
+      fetch("http://localhost:3000/projects", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          title: this.title,
+          description: this.description,
+          status: false,
+        }),
+      })
+        .then(() => {
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
 
 <style>
