@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>To Do List</h1>
+    <h1>Home</h1>
     <div v-for="project in projects" :key="project.id">
       <singleProject
         :project="project"
