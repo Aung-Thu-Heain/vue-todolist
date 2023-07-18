@@ -9,7 +9,9 @@
           >delete_forever</span
         >
         <span class="material-icons" @click="updateComplete"> task_alt </span>
-        <span class="material-icons">edit</span>
+        <router-link :to="{ name: 'editProject', params: { id: project.id } }">
+          <span class="material-icons">edit</span>
+        </router-link>
       </div>
     </div>
 
@@ -84,5 +86,8 @@ span:hover {
 }
 .complete {
   border-left: 5px solid green;
+}
+.material-icons {
+  color: rgb(70, 65, 65);
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>Home</h1>
+    <FilterNav @fileterName="filter = $event" :filterValue="filter" />
     <div v-for="project in projects" :key="project.id">
       <singleProject
         :project="project"
@@ -12,17 +13,23 @@
 </template>
 
 <script>
+import FilterNav from "../components/FilterNav";
 import SingleProject from "@/components/SingleProject.vue";
 // @ is an alias to /src
 
 export default {
-  components: { SingleProject },
+  components: {
+    FilterNav,
+    SingleProject,
+  },
   name: "HomeView",
   data() {
     return {
       projects: [],
+      filter: "all",
     };
   },
+
   methods: {
     deleteUi(id) {
       this.projects = this.projects.filter((project) => {
