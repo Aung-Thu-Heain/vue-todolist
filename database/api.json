@@ -1,12 +1,6 @@
 {
   "projects": [
     {
-      "title": "first project",
-      "description": "first description",
-      "status": true,
-      "id": 1
-    },
-    {
       "title": "second project",
       "description": "second description",
       "status": true,
@@ -21,7 +15,7 @@
     {
       "title": "baby kitty",
       "description": "hello baby",
-      "status": false,
+      "status": true,
       "id": 4
     }
   ]

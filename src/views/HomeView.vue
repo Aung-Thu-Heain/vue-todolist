@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <FilterNav @fileterName="filter = $event" :filterValue="filter" />
-    <div v-for="project in projects" :key="project.id">
+    <FilterNav @fileterName="filtered = $event" :filterValue="filtered" />
+    <div v-for="project in projectsFilter" :key="project.id">
       <singleProject
         :project="project"
         @delete="deleteUi"
@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       projects: [],
-      filter: "all",
+      filtered: "all",
     };
   },
 
@@ -54,6 +54,21 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+  },
+  computed: {
+    projectsFilter() {
+      if (this.filtered === "pending") {
+        return this.projects.filter((p) => {
+          return p.status === false;
+        });
+      }
+      if (this.filtered === "complete") {
+        return this.projects.filter((p) => {
+          return p.status === true;
+        });
+      }
+      return this.projects;
+    },
   },
 };
 </script>
